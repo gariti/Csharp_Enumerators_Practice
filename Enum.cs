@@ -10,19 +10,34 @@ namespace SwitchStatement
     {
         static void Main(string[] args)
         {
-            SuperHero myValue = SuperHero.Batman;
+            Console.WriteLine("Type in a superhero's name to see his nickname: ");
+            string userValue = Console.ReadLine();
 
-            switch (myValue)
+            SuperHero myValue;
+            if (Enum.TryParse<SuperHero>(userValue, true, out myValue))
             {
-                case SuperHero.Batman:
-                    break;
-                case SuperHero.Superman:
-                    break;
-                case SuperHero.GreenLantern:
-                    break;
-                default:
-                    break;
+                switch (myValue)
+                {
+                    case SuperHero.Batman:
+                        Console.WriteLine("Caped Crusader");
+                        break;
+                    case SuperHero.Superman:
+                        Console.WriteLine("Man of steel");
+                        break;
+                    case SuperHero.GreenLantern:
+                        Console.WriteLine("Emerald Knight");
+                        break;
+                    default:
+                        Console.WriteLine("Error! This should never happen.");
+                        break;
+                }
             }
+            else
+            {
+                Console.WriteLine("Invalid superhero");
+            }
+
+            Console.ReadLine();
         }
     }
 
